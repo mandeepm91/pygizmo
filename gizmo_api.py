@@ -3,21 +3,22 @@ import requests as r
 import logging   
 #GIZMO_LOG_FORMAT = '%(asctime)-15s %(user)-8s %(message)s' # removed %(clientip)s
 #logging.basicConfig(filename='gizmo.log', level=logging.DEBUG, format=GIZMO_LOG_FORMAT)
+# ADDED Sep 2, 2015 -- API limits imposed on each operation (max 60 calls per minute, so wait remainder of second after call is done)
+# ADDED Dec 7, 2015 -- allow a cherrypy.request specific auth to override this global auth.
+# ADDED June 2016 -- oauth1 supported
 logging.basicConfig(filename='error.log',level=logging.WARNING)
 root = 'https://restapi.surveygizmo.com/v4/'
+
 def get_auth():
     """ every call requires a token and secret, or if you are using oauth, you would implement that here instead.
     use the gizmo_auth.py file to fill in your oauth1 process, then dump to a database. your query might look like this:
     
-    SELECT gizmo_access_token, gizmo_access_token_secret from api_user where uid = %s LIMIT 1;""",'ka', params=(uid,)
+    "SELECT gizmo_access_token, gizmo_access_token_secret from api_user where uid = %s LIMIT 1", params=(uid,)
     
     for fetching tokens for a user.
     """
     return 'api_token=<your token goes here>&api_token_secret=<your secret>'
     
-# ADDED Sep 2, 2015 -- API limits imposed on each operation (max 60 calls per minute, so wait remainder of second after call is done)
-# ADDED Dec 7, 2015 -- allow a cherrypy.request specific auth to override this global auth.
-# ADDED June 2016 -- oauth1 supported
 
 # --------------------------- debugging functions --------------------
 def show(result, indent=''):
