@@ -11,9 +11,9 @@ At a bare minimum, clone this and edit the ``gizmo_api.py`` get_auth() function 
     
     These calls include:
 
-add_question()
-add_option()
-update_survey_page()
+* add_question()
+* add_option()
+* update_survey_page()
 add_page()
 update_survey()
 create_survey()
