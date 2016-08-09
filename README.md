@@ -3,7 +3,7 @@
 
 At a bare minimum, clone this and edit the ``gizmo_api.py`` get_auth() function to return your specific API_KEY and API_TOKEN. This gets added to all API calls.
 
-# note on using pygizmo with python's rauth module versus requests module:
+### note on using pygizmo with python's rauth module versus requests module:
 
     All CALLs using rauth.sessions that *modify data* must include a _method parameter, and separate parameters for everything
     after the '?' in the url / endpoint to work. These existing calls work with requests just fine, which can accept strings with
@@ -14,15 +14,17 @@ At a bare minimum, clone this and edit the ``gizmo_api.py`` get_auth() function 
 * add_question()
 * add_option()
 * update_survey_page()
-add_page()
-update_survey()
-create_survey()
-delete_email_message()
-update_email_message()
-create_email_message()
-delete_contact()
-update_contact()
-create_contact()
-delete_campaign()
-update_campaign()
-create_campaign()
+* add_page()
+* update_survey()
+* create_survey()
+* delete_email_message()
+* update_email_message()
+* create_email_message()
+* delete_contact()
+* update_contact()
+* create_contact()
+* delete_campaign()
+* update_campaign()
+* create_campaign()
+
+### I plan to rewrite to work seemlessly with both rauth and requests, so you can use oauth1 instead of just api_key. But tricky. And it makes the API less easy to work with. You have to know what special paramters to pass outside of this wrapper with rauth.
